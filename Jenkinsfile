@@ -7,6 +7,12 @@ pipeline {
       }
     }
 
+    stage('MakeDir') {
+      steps {
+        sh 'mkdir /etc/ansible'
+      }
+    }
+
     stage('move') {
       steps {
         sh 'mv * /etc/ansible'
