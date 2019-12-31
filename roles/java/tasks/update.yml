@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks: 
+  - name: initial upgrade
+    apt:
+      force_apt_get: yes
+      upgrade: "yes"
+      update_cache: yes
+      cache_valid_time: 43200
+
+  - name: install nano
+    apt:
+      force_apt_get: yes
+      name: nano
+      state: present
