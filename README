@@ -1,8 +1,10 @@
-This pipeline was created to practice creating a CI/CD pipeline with Jenkins and Ansible. It assumes that the jenkins server has Ansible installed.
+This pipeline was created to practice creating a CI/CD pipeline with Jenkins and Ansible. It assumes that a jenkins server has Ansible and Docker installed and is running a ubuntu container.
 
-The Jenkinsfile will create a pipeline that places the contents of the repository in /etc/ansible.
+The pipeline will take the playbook in the repository and will execute the tasks in the container. The container is meant to simulate a server and save time (and money) of setting up cloud linux instances or Virtual Machines to test your playbook.
+However, this pipeline will work with cloud instances. Just modify the IP address in hosts. 
 
-To work, it must have a ubuntu container running with openssh. The Dockerfile in containers will create this image. Open containers/Dockerfile and add your jenkins SSH key where $YOUR_KEY is. 
+The Jenkinsfile creates a pipeline that places the contents of the repository in /etc/ansible. 
+To create the ubuntu container, open the Dockerfile and add your jenkins SSH key where $YOUR_KEY is. 
 
 Once key is added, build the image and create the container run:
         docker build -t env .
@@ -14,7 +16,7 @@ This will build the image, create the container, and start the openssh server.
 If there are any problems it may be because of the IP address. Check your containers IP address with 
         docker inspect env0 | grep IPAddress
 
-And, make sure this is the IPAdress listed in hosts (I default it to 172.17.0.2).                         
+And, make sure this is the same IPAdress listed in hosts (I default it to 172.17.0.2 b/c that is the default for a Docker container).
 
 Now, the pipeline is ready to be deployed. Commit changes and trigger an automatic build.
 
