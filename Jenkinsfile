@@ -9,7 +9,7 @@ pipeline {
 
     stage('MakeDir') {
       steps {
-        sh 'mkdir /etc/ansible'
+        sh 'echo makeDir'
       }
     }
 
