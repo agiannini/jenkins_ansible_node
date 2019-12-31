@@ -1,15 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('clean') {
       steps {
-        sh 'echo build'
+        sh 'rm -r /etc/ansible'
       }
     }
 
-    stage('Run') {
+    stage('move') {
       steps {
-        sh 'pwd ls echo run'
+        sh 'mv * /etc/ansible'
+      }
+    }
+
+    stage('run') {
+      steps {
+        sh 'ansible-playbook /etc/ansible/playbook.yml'
       }
     }
 
