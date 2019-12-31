@@ -1,0 +1,7 @@
+---
+  - name: install nano
+    apt:
+      force_apt_get: yes
+      name: nano
+      state: present
+    
