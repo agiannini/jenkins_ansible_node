@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('clean') {
       steps {
-        sh 'rm -r /etc/ansible/'
+        sh 'rm -rf /etc/ansible/*'
       }
     }
 
