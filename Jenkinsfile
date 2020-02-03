@@ -1,21 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('ping') {
       steps {
         sh 'ansible -m ping all'
       }
     }
 
-    stage('test') {
+    stage('run') {
       steps {
-        sh 'pwd'
-      }
-    }
-
-    stage('deploy') {
-      steps {
-        sh 'pwd'
+        sh 'ansible-playbook playbook.yml'
       }
     }
 
