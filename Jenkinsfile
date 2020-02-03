@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'echo build'
+        sh 'ansible -m ping all'
       }
     }
 
     stage('test') {
       steps {
-        sh 'echo test'
+        sh 'pwd'
       }
     }
 
